@@ -149,7 +149,7 @@ export default class ParameterWidget extends React.Component<Props, State> {
             );
         } else if (param instanceof BangParameter) {
             return (
-                <button onClick={this.handleButtonClick}>{`${param.label}`}</button>
+                <button onClick={this.handleButtonClick}>{`${param.label} (${param.id})`}</button>
             );
         } else if (param instanceof InvalidParameter) {
             return (
@@ -180,7 +180,7 @@ export default class ParameterWidget extends React.Component<Props, State> {
                     marginTop: 20,
                     marginBottom: 20,
                 }}>
-                    {label} ({param.id}):&nbsp;
+                    {`${param instanceof BangParameter ? "" : (`${label} (${param.id}): `)}`}
                     {this.renderValue()}
                 </div>
 
